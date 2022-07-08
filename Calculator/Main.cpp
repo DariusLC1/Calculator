@@ -47,6 +47,7 @@ Main::Main() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(30, 30), wxSize(
 	Button = new wxButton(this, 18, "Decimal", wxPoint(250, 145), wxSize(110, 75));
 	Button = new wxButton(this, 19, "+ / -", wxPoint(10, 570), wxSize(110, 75));
 	Button = new wxButton(this, 20, "+", wxPoint(250, 570), wxSize(110, 75));
+	//end of buttons needed
 	List = new wxListBox(this, wxID_ANY, wxPoint(370, 10), wxSize(150, 400));
 	Text = new wxTextCtrl(this, wxID_ANY, "", wxPoint(10, 10), wxSize(350, 120));
 }
@@ -58,6 +59,7 @@ Main::~Main()
 
 void Main::OnButtonClicked(wxCommandEvent& evt)
 {
+	//start of button events
 	switch (evt.GetId())
 	{
 		case 1:
