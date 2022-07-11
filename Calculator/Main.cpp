@@ -1,4 +1,5 @@
 #include "Main.h"
+#include "ButtonFactory.h"
 
 
 wxBEGIN_EVENT_TABLE(Main, wxFrame)
@@ -27,26 +28,10 @@ wxEND_EVENT_TABLE()
 
 Main::Main() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(30, 30), wxSize(550, 700))
 {
-	Button = new wxButton(this, 1, "1", wxPoint(10, 315), wxSize(110, 75));
-	Button = new wxButton(this, 2, "2", wxPoint(10, 400), wxSize(110, 75));
-	Button = new wxButton(this, 3, "3", wxPoint(10, 485), wxSize(110, 75));
-	Button = new wxButton(this, 4, "4", wxPoint(130, 315), wxSize(110, 75));
-	Button = new wxButton(this, 5, "5", wxPoint(130, 400), wxSize(110, 75));
-	Button = new wxButton(this, 6, "6", wxPoint(130, 485), wxSize(110, 75));
-	Button = new wxButton(this, 7, "7", wxPoint(250, 315), wxSize(110, 75));
-	Button = new wxButton(this, 8, "8", wxPoint(250, 400), wxSize(110, 75));
-	Button = new wxButton(this, 9, "9", wxPoint(250, 485), wxSize(110, 75));
-	Button = new wxButton(this, 10, "0", wxPoint(130, 570), wxSize(110, 75));
-	Button = new wxButton(this, 11, "-", wxPoint(370, 570), wxSize(150, 75));
-	Button = new wxButton(this, 12, "/", wxPoint(130, 230), wxSize(110, 75));
-	Button = new wxButton(this, 13, "x", wxPoint(10, 230), wxSize(110, 75));
-	Button = new wxButton(this, 14, "Clear", wxPoint(250, 230), wxSize(110, 75));
-	Button = new wxButton(this, 15, "=", wxPoint(370, 420), wxSize(150, 140));
-	Button = new wxButton(this, 16, "Binary", wxPoint(10, 145), wxSize(110, 75));
-	Button = new wxButton(this, 17, "Hex", wxPoint(130, 145), wxSize(110, 75));
-	Button = new wxButton(this, 18, "Decimal", wxPoint(250, 145), wxSize(110, 75));
-	Button = new wxButton(this, 19, "+ / -", wxPoint(10, 570), wxSize(110, 75));
-	Button = new wxButton(this, 20, "+", wxPoint(250, 570), wxSize(110, 75));
+	button.CreateButtons(this);
+	//end of buttons needed
+	//end of buttons needed
+	//end of buttons needed
 	List = new wxListBox(this, wxID_ANY, wxPoint(370, 10), wxSize(150, 400));
 	Text = new wxTextCtrl(this, wxID_ANY, "", wxPoint(10, 10), wxSize(350, 120));
 }

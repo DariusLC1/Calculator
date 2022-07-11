@@ -1,5 +1,6 @@
 #pragma once
 #include "wx\wx.h"
+#include "ButtonFactory.h"
 
 class Main : public wxFrame
 {
@@ -7,9 +8,9 @@ public:
 	Main();
 	~Main();
 public:
-	wxButton* Button = nullptr;
 	wxListBox* List = nullptr;
 	wxTextCtrl* Text = nullptr;
+	ButtonFactory button;
 
 	void OnButtonClicked(wxCommandEvent& evt);
 
