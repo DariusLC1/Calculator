@@ -1,5 +1,7 @@
 #include "Main.h"
 #include "ButtonFactory.h"
+#include "Processes.h"
+#include <string>
 
 
 wxBEGIN_EVENT_TABLE(Main, wxFrame)
@@ -76,19 +78,73 @@ void Main::OnButtonClicked(wxCommandEvent& evt)
 			Text->AppendText("0");
 			break;
 		case 11:
-			Text->AppendText("-");
+			sym = "-";
+			if (a == NULL)
+			{
+				a = std::stod(Text->GetValue().ToStdString());
+				Text->Clear();
+			}
+			else 
+			{
+				b = std::stod(Text->GetValue().ToStdString());
+				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, "-")));
+				a = std::stod(Text->GetValue().ToStdString());
+				List->Append(std::to_string(a));
+			}
+			b = NULL;
 			break;
 		case 12:
-			Text->AppendText("/");
+			sym = "/";
+			if (a == NULL)
+			{
+				a = std::stod(Text->GetValue().ToStdString());
+				Text->Clear();
+			}
+			else
+			{
+				b = std::stod(Text->GetValue().ToStdString());
+				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, "/")));
+				a = std::stod(Text->GetValue().ToStdString());
+				List->Append(std::to_string(a));
+			}
+			b = NULL;
 			break;
 		case 13:
-			Text->AppendText("x");
+			sym = "*";
+			if (a == NULL)
+			{
+				a = std::stod(Text->GetValue().ToStdString());
+				Text->Clear();
+			}
+			else
+			{
+				b = std::stod(Text->GetValue().ToStdString());
+				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, "*")));
+				a = std::stod(Text->GetValue().ToStdString());
+				List->Append(std::to_string(a));
+			}
+			b = NULL;
 			break;
 		case 14:
-			Text->AppendText("Clear");
+			Text->Clear();
+			List->Clear();
+			a = NULL;
+			b = NULL;
 			break;
 		case 15:
-			Text->AppendText("=");
+			if (a == NULL)
+			{
+				a = std::stod(Text->GetValue().ToStdString());
+				Text->Clear();
+			}
+			else
+			{
+				b = std::stod(Text->GetValue().ToStdString());
+				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, sym)));
+				a = std::stod(Text->GetValue().ToStdString());
+				List->Append(std::to_string(a));
+			}
+			b = NULL;
 			break;
 		case 16:
 			Text->AppendText("Binary");
@@ -100,10 +156,36 @@ void Main::OnButtonClicked(wxCommandEvent& evt)
 			Text->AppendText("Decimal");
 			break;
 		case 19:
-			Text->AppendText("+ / -");
+			sym = " ";
+			if (a == NULL)
+			{
+				a = std::stod(Text->GetValue().ToStdString());
+				Text->Clear();
+			}
+			else
+			{
+				b = std::stod(Text->GetValue().ToStdString());
+				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, " ")));
+				a = std::stod(Text->GetValue().ToStdString());
+				List->Append(std::to_string(a));
+			}
+			b = NULL;
 			break;
 		case 20:
-			Text->AppendText("+");
+			sym = "+";
+			if (a == NULL)
+			{
+				a = std::stod(Text->GetValue().ToStdString());
+				Text->Clear();
+			}
+			else
+			{
+				b = std::stod(Text->GetValue().ToStdString());
+				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, "+")));
+				a = std::stod(Text->GetValue().ToStdString());
+				List->Append(std::to_string(a));
+			}
+			b = NULL;
 			break;
 
 	}
