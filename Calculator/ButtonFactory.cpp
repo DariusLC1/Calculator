@@ -21,6 +21,7 @@ void ButtonFactory::CreateButtons(wxFrame* Parent)
 	Button16 = new wxButton(Parent, 16, "Binary", wxPoint(10, 145), wxSize(110, 75));
 	Button17 = new wxButton(Parent, 17, "Hex", wxPoint(130, 145), wxSize(110, 75));
 	Button18 = new wxButton(Parent, 18, "Decimal", wxPoint(250, 145), wxSize(110, 75));
-	Button19 = new wxButton(Parent, 19, "+ / -", wxPoint(10, 570), wxSize(110, 75));
+	Button19 = new wxButton(Parent, 19, "Mod", wxPoint(10, 570), wxSize(110, 75));
 	Button20 = new wxButton(Parent, 20, "+", wxPoint(250, 570), wxSize(110, 75));
+
 }

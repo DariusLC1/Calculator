@@ -43,39 +43,100 @@ Main::~Main()
 	
 }
 
+
 void Main::OnButtonClicked(wxCommandEvent& evt)
 {
 	switch (evt.GetId())
 	{
 		case 1:
 			Text->AppendText("1");
+			if (a != NULL && b != NULL)
+			{
+				Text->Clear();
+				b = NULL;
+				Text->AppendText("1");
+			}
 			break;
 		case 2:
 			Text->AppendText("2");
+			if (a != NULL && b != NULL)
+			{
+				Text->Clear();
+				b = NULL;
+				Text->AppendText("2");
+			}
 			break;
 		case 3:
 			Text->AppendText("3");
+			if (a != NULL && b != NULL)
+			{
+				Text->Clear();
+				b = NULL;
+				Text->AppendText("3");
+			}
 			break;
 		case 4:
 			Text->AppendText("4");
+			if (a != NULL && b != NULL)
+			{
+				Text->Clear();
+				b = NULL;
+				Text->AppendText("4");
+			}
 			break;
 		case 5:
 			Text->AppendText("5");
+			if (a != NULL && b != NULL)
+			{
+				Text->Clear();
+				b = NULL;
+				Text->AppendText("5");
+			}
 			break;
 		case 6:
 			Text->AppendText("6");
+			if (a != NULL && b != NULL)
+			{
+				Text->Clear();
+				b = NULL;
+				Text->AppendText("6");
+			}
 			break;
 		case 7:
 			Text->AppendText("7");
+			if (a != NULL && b != NULL)
+			{
+				Text->Clear();
+				b = NULL;
+				Text->AppendText("7");
+			}
 			break;
 		case 8:
 			Text->AppendText("8");
+			if (a != NULL && b != NULL)
+			{
+				Text->Clear();
+				b = NULL;
+				Text->AppendText("8");
+			}
 			break;
 		case 9:
 			Text->AppendText("9");
+			if (a != NULL && b != NULL)
+			{
+				Text->Clear();
+				b = NULL;
+				Text->AppendText("9");
+			}
 			break;
 		case 10:
 			Text->AppendText("0");
+			if (a != NULL && b != NULL)
+			{
+				Text->Clear();
+				b = NULL;
+				Text->AppendText("0");
+			}
 			break;
 		case 11:
 			sym = "-";
@@ -87,11 +148,11 @@ void Main::OnButtonClicked(wxCommandEvent& evt)
 			else 
 			{
 				b = std::stod(Text->GetValue().ToStdString());
-				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, "-")));
+				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, sym)));
 				a = std::stod(Text->GetValue().ToStdString());
 				List->Append(std::to_string(a));
 			}
-			b = NULL;
+			b = 1;
 			break;
 		case 12:
 			sym = "/";
@@ -100,14 +161,19 @@ void Main::OnButtonClicked(wxCommandEvent& evt)
 				a = std::stod(Text->GetValue().ToStdString());
 				Text->Clear();
 			}
+			else if (a != NULL)
+			{
+				Text->Clear();
+				
+			}
 			else
 			{
 				b = std::stod(Text->GetValue().ToStdString());
-				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, "/")));
-				a = std::stod(Text->GetValue().ToStdString());
-				List->Append(std::to_string(a));
+					Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, "/")));
+					a = std::stod(Text->GetValue().ToStdString());
+					List->Append(std::to_string(a));
 			}
-			b = NULL;
+
 			break;
 		case 13:
 			sym = "*";
@@ -119,11 +185,11 @@ void Main::OnButtonClicked(wxCommandEvent& evt)
 			else
 			{
 				b = std::stod(Text->GetValue().ToStdString());
-				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, "*")));
+				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, sym)));
 				a = std::stod(Text->GetValue().ToStdString());
 				List->Append(std::to_string(a));
 			}
-			b = NULL;
+			b = 1;
 			break;
 		case 14:
 			Text->Clear();
@@ -144,16 +210,34 @@ void Main::OnButtonClicked(wxCommandEvent& evt)
 				a = std::stod(Text->GetValue().ToStdString());
 				List->Append(std::to_string(a));
 			}
-			b = NULL;
+			b = 1;
 			break;
 		case 16:
-			Text->AppendText("Binary");
+			a = std::stod(Text->GetValue().ToStdString());
+			Text->Clear();
+			List->Append(Processes::Binary(a));
+			Text->AppendText(Processes::Binary(a));
 			break;
 		case 17:
-			Text->AppendText("Hex");
+			a = std::stod(Text->GetValue().ToStdString());
+			Text->Clear();
+			List->Append(Processes::Hex(a));
+			Text->AppendText(Processes::Hex(a));
 			break;
 		case 18:
-			Text->AppendText("Decimal");
+			if (a == NULL)
+			{
+				a = std::stod(Text->GetValue().ToStdString());
+				Text->Clear();
+				List->Append(std::to_string(a));
+				Text->AppendText(std::to_string(a));
+			}
+			else
+			{
+				Text->Clear();
+				List->Append(std::to_string(a));
+				Text->AppendText(std::to_string(a));
+			}
 			break;
 		case 19:
 			sym = " ";
@@ -169,7 +253,7 @@ void Main::OnButtonClicked(wxCommandEvent& evt)
 				a = std::stod(Text->GetValue().ToStdString());
 				List->Append(std::to_string(a));
 			}
-			b = NULL;
+			b = 1;
 			break;
 		case 20:
 			sym = "+";
@@ -181,11 +265,11 @@ void Main::OnButtonClicked(wxCommandEvent& evt)
 			else
 			{
 				b = std::stod(Text->GetValue().ToStdString());
-				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, "+")));
+				Text->SetValue(std::to_string(Processes::GetInstance()->calculation(a, b, sym)));
 				a = std::stod(Text->GetValue().ToStdString());
 				List->Append(std::to_string(a));
 			}
-			b = NULL;
+			b = 1;
 			break;
 
 	}
